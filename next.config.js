@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
 const wpImageUrl = process.env.WP_IMAGE_URL;
-const wpImageHost = wpImageUrl ? new URL(wpImageUrl).hostname : null;
+const wpImageHost = wpImageUrl ? new URL(wpImageUrl).hostname : "hotdang.guillaumelebegue.fr";
 
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: wpImageHost
-      ? [{ protocol: "http", hostname: wpImageHost }]
-      : [],
+    remotePatterns: [
+      { protocol: "https", hostname: wpImageHost },
+      { protocol: "http", hostname: wpImageHost },
+    ],
   },
 };
 
