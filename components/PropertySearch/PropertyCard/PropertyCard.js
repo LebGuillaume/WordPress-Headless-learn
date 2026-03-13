@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function PropertyCard({ ...props }) {
   return (
-    <Link
+    <a
       className="border border-gray-200 rounded-lg p-4 hover:bg-slate-200"
       href={props.destination}
     >
@@ -49,6 +49,6 @@ export default function PropertyCard({ ...props }) {
           )}
         </div>
       </div>
-    </Link>
+    </a>
   );
 }

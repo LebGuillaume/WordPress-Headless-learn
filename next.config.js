@@ -5,7 +5,9 @@ const wpImageHost = wpImageUrl ? new URL(wpImageUrl).hostname : null;
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: wpImageHost ? [wpImageHost] : [],
+    remotePatterns: wpImageHost
+      ? [{ protocol: "http", hostname: wpImageHost }]
+      : [],
   },
 };
 
