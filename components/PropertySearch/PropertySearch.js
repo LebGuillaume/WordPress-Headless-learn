@@ -1,7 +1,8 @@
+"use client";
 import { useEffect, useState } from "react";
 import Results from "./Results/Results";
 import Pagination from "./Pagination/Pagination";
-import { useRouter } from "next/router";
+import { useRouter, useParams } from "next/navigation";
 import queryString from "query-string";
 import Filters from "components/Filters/Filters";
 
@@ -10,6 +11,7 @@ export default function PropertySearch() {
   const [total, setTotal] = useState(0);
   const pageSize = 3;
   const router = useRouter();
+  const params = useParams();
   const search = async () => {
     const { page, petFriendly, hasParking, minPrice, maxPrice } =
       queryString.parse(window.location.search);
@@ -44,11 +46,7 @@ export default function PropertySearch() {
     );
 
     await router.push(
-      `${router.query.slug.join("/")}?page=${page}&petFriendly=${petFriendly === "true"}&hasParking=${hasParking === "true"}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
-      null,
-      {
-        shallow: true,
-      },
+      `/${params.slug.join("/")}?page=${page}&petFriendly=${petFriendly === "true"}&hasParking=${hasParking === "true"}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
     );
     search();
     // Implement pagination logic here, e.g., fetch new results based on the page number
@@ -63,11 +61,7 @@ export default function PropertySearch() {
     maxPrice,
   }) => {
     await router.push(
-      `${router.query.slug.join("/")}?page=1&petFriendly=${!!petFriendly}&hasParking=${!!hasParking}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
-      null,
-      {
-        shallow: true,
-      },
+      `/${params.slug.join("/")}?page=1&petFriendly=${!!petFriendly}&hasParking=${!!hasParking}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
     );
     search();
     // Implement search logic here, e.g., fetch results based on the filter values

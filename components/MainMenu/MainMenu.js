@@ -20,9 +20,9 @@ export const MainMenu = ({
             className="px-4 hover:bg-slate-700 rounded transition-colors cursor-poiter relative group"
           >
             <div>
-              <Link href={item.destination} className="p-5 block">
+              <a href={item.destination} className="p-5 block">
                 {item.label}
-              </Link>
+              </a>
             </div>
             {!!item.subMenuItems?.length && (
               <div className="absolute top-full right-0 bg-slate-700 text-white rounded -mt-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto ">
@@ -31,9 +31,9 @@ export const MainMenu = ({
                     key={subItem.id}
                     className=" p-5 hover:bg-slate-600 whitespace-nowrap flex justify-end "
                   >
-                    <Link href={subItem.destination} className="block">
+                    <a href={subItem.destination} className="block">
                       {subItem.label}
-                    </Link>
+                    </a>
                   </div>
                 ))}
               </div>
